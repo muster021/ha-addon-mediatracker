@@ -1,0 +1,30 @@
+configuration:
+  tmdb_lang:
+    name: TMDB Language
+    description: >-
+      ISO 639-1 language code for movie and TV show metadata (e.g. en, sv, de, fr).
+      See themoviedb.org for supported languages.
+  server_lang:
+    name: Server Language
+    description: >-
+      UI language. Supported values: da, de, en, es, fr, ko, pt.
+  audible_lang:
+    name: Audible Region
+    description: >-
+      Country code for audiobook lookups.
+      Options: au (Australia), ca (Canada), de (Germany), es (Spain),
+      fr (France), in (India), it (Italy), jp (Japan), uk (UK), us (USA).
+  igdb_client_id:
+    name: IGDB Client ID
+    description: >-
+      Optional. Required for video game metadata.
+      Get your credentials at https://api.igdb.com/#account-creation
+  igdb_client_secret:
+    name: IGDB Client Secret
+    description: >-
+      Optional. Required for video game metadata.
+  log_level:
+    name: Log Level
+    description: Logging verbosity. Use "info" for normal operation, "debug" for troubleshooting.
+network:
+  7481/tcp: MediaTracker Web UI and API

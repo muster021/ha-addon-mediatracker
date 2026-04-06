@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Test artifacts
+test-data/
+*.test.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
