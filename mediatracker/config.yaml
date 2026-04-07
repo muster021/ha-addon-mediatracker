@@ -4,7 +4,7 @@ slug: mediatracker
 description: >-
   Track movies, TV shows, video games, books and audiobooks.
   Includes Home Assistant calendar integration via iCal feed.
-url: https://github.com/bonukai/MediaTracker
+url: https://github.com/muster021/MediaTracker
 arch:
   - amd64
   - aarch64
