@@ -2,11 +2,12 @@
 
 ## Reporting vulnerabilities
 
-To report a security issue in this add-on wrapper, open a GitHub issue at
+To report a security issue, open a GitHub issue at
 https://github.com/muster021/ha-addon-mediatracker/issues
 
-For vulnerabilities in MediaTracker itself, please contact the upstream project at
-https://github.com/bonukai/MediaTracker
+This add-on runs a fork of MediaTracker maintained at
+https://github.com/muster021/MediaTracker (which includes HA calendar integration,
+Sonarr sync, Discover, and streaming availability — not present in the upstream project).
 
 ## Known issues in upstream dependencies
 
