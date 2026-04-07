@@ -36,10 +36,10 @@ Requires Home Assistant 2025.4 or later.
 4. Enter the URL:
 
 ```
-http://YOUR-HA-IP:7481/api/calendar.ics?token=YOUR_TOKEN
+http://YOUR_HOMEASSISTANT_IP:7481/api/calendar.ics?token=YOUR_TOKEN
 ```
 
-> Use the IP address of your Home Assistant host, not a `.local` hostname.
+> Use the IP address of your Home Assistant host (e.g. `192.168.1.100`), not a `.local` hostname — mDNS may not resolve inside the HA container. Since MediaTracker runs as an add-on on the same machine, this is the same IP you use to reach the HA web UI.
 
 The feed shows upcoming episodes for all series on your watchlist (next 90 days).
 Append `&days=N` to change the window.
