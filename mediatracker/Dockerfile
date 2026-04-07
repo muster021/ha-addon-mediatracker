@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/muster021/mediatracker:0.2.11
+ARG BUILD_FROM=ghcr.io/muster021/mediatracker:0.2.12
 FROM $BUILD_FROM
 
 # jq is needed to parse /data/options.json written by HA Supervisor
