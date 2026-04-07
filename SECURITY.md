@@ -5,38 +5,15 @@
 To report a security issue, open a GitHub issue at
 https://github.com/muster021/ha-addon-mediatracker/issues
 
-This add-on runs a fork of MediaTracker maintained at
-https://github.com/muster021/MediaTracker (which includes HA calendar integration,
-Sonarr sync, Discover, and streaming availability — not present in the upstream project).
+This add-on runs MediaTracker from
+https://github.com/muster021/MediaTracker (a fork with HA integration, Sonarr sync,
+Discover and streaming availability).
 
-## Known issues in upstream dependencies
+## Known issues
 
-A Trivy scan of the `bonukai/mediatracker:0.2.11` base image identified several
-HIGH/CRITICAL CVEs in Node.js dependencies. These cannot be fixed in this add-on
-wrapper — they require upstream updates to MediaTracker.
-
-| Package | CVE | Severity | Summary |
-|---------|-----|----------|---------|
-| axios | CVE-2026-25639 | HIGH | DoS via `__proto__` key in mergeConfig |
-| fast-xml-parser | CVE-2026-25896 | CRITICAL | XSS via improper DOCTYPE entity handling |
-| fast-xml-parser | CVE-2026-26278 | HIGH | DoS via XML entity expansion |
-| fast-xml-parser | CVE-2026-33036 | HIGH | DoS via XML entity expansion bypass |
-| form-data | CVE-2025-7783 | CRITICAL | Unsafe random function |
-| lodash | CVE-2026-4800 | HIGH | Arbitrary code execution via template imports |
-| path-to-regexp | CVE-2026-4867 | HIGH | DoS via catastrophic backtracking |
-| tar-fs | CVE-2024-12905 | HIGH | Path traversal via malicious tar file |
-| tar-fs | CVE-2025-48387 | HIGH | Extract writes outside specified directory |
-| tar-fs | CVE-2025-59343 | HIGH | Symlink validation bypass |
-
-### Risk context
-
-MediaTracker is a **local network service** intended for personal home use.
-The above CVEs are primarily relevant if MediaTracker is exposed to untrusted users
-or the public internet. For typical home use behind a local network, the practical
-risk is low.
-
-Do not expose port 7481 to the public internet without proper authentication
-and a reverse proxy with TLS.
+A Trivy scan of the base image identified one remaining HIGH CVE in a devDependency
+(`swagger-typescript-api` / lodash) that is only present during the build process
+and is not included in the production runtime. It poses no runtime risk.
 
 ## This add-on's security posture
 
@@ -46,3 +23,4 @@ and a reverse proxy with TLS.
 - No secrets are echoed or logged in run.sh
 - No `host_network` required
 - HA Supervisor manages container isolation
+- Direct dependencies patched: axios 1.14, fast-xml-parser 5.5, form-data 4.0.5, lodash 4.18, tar-fs 3.1, path-to-regexp 0.1.13
