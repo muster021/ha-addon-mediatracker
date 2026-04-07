@@ -2,7 +2,7 @@ ARG BUILD_FROM=ghcr.io/muster021/mediatracker:0.2.11
 FROM $BUILD_FROM
 
 # jq is needed to parse /data/options.json written by HA Supervisor
-RUN apk add --no-cache jq
+RUN apk add --no-cache jq su-exec
 
 COPY run.sh /run.sh
 RUN chmod a+x /run.sh

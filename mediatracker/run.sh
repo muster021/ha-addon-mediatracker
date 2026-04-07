@@ -20,21 +20,17 @@ export AUDIBLE_LANG
 export PORT=7481
 export HOSTNAME=0.0.0.0
 export NODE_ENV=production
+export HOME=/home/abc
 
 # Only export optional credentials if non-empty
 [ -n "$IGDB_CLIENT_ID" ] && export IGDB_CLIENT_ID
 [ -n "$IGDB_CLIENT_SECRET" ] && export IGDB_CLIENT_SECRET
 
-# Ensure storage directories exist with correct ownership for the 'abc' user
+# Ensure storage directories exist and are writable by uid 1000
 mkdir -p /data/assets /data/logs
-chown -R abc:abc /data
+chown -R 1000:1000 /data
 
-# Set HOME to abc's actual home directory.
-# su -m preserves env vars (including HOME) from the parent shell.
-# Without this, HOME=/root would cause MediaTracker to try creating /root/.mediatracker
-# (which abc cannot write to).
-export HOME=/home/abc
-
-# Drop privileges and start MediaTracker as 'abc' (uid=1000)
-# -m preserves all exported environment variables set above
-exec su -m -c "node /app/build/index.js" abc
+# Drop privileges to uid 1000 (abc) and start MediaTracker.
+# su-exec sets uid/gid directly without username lookup — works even if
+# /etc/passwd is not accessible in the container context.
+exec su-exec 1000:1000 node /app/build/index.js
