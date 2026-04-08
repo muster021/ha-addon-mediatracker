@@ -15,6 +15,8 @@ ports:
 ports_description:
   7481/tcp: MediaTracker Web UI & API
 webui: "http://[HOST]:[PORT:7481]"
+panel_icon: mdi:television-play
+panel_title: MediaTracker
 map:
   - type: data
     read_only: false
