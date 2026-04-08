@@ -31,7 +31,7 @@ jobs:
 
       - name: Update Dockerfile base image version
         run: |
-          sed -i "s|ARG BUILD_FROM=ghcr.io/muster021/mediatracker:.*|ARG BUILD_FROM=ghcr.io/muster021/mediatracker:${{ steps.version.outputs.version }}|" mediatracker/Dockerfile
+          sed -i "s|FROM ghcr.io/muster021/mediatracker:.*|FROM ghcr.io/muster021/mediatracker:${{ steps.version.outputs.version }}|" mediatracker/Dockerfile
 
       - name: Commit and push
         run: |
