@@ -33,4 +33,4 @@ chown -R 1000:1000 /data
 # Drop privileges to uid 1000 (abc) and start MediaTracker.
 # su-exec sets uid/gid directly without username lookup — works even if
 # /etc/passwd is not accessible in the container context.
-exec su-exec 1000:1000 node /app/build/index.js
+exec su-exec 1000:1000 /usr/local/bin/node /app/build/index.js
