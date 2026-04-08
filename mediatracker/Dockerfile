@@ -1,4 +1,4 @@
-FROM ghcr.io/muster021/mediatracker:0.2.12
+FROM ghcr.io/muster021/mediatracker:0.2.13
 
 # jq to parse /data/options.json, su-exec to drop privileges
 RUN apk add --no-cache jq su-exec
